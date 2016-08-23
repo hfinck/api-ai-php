@@ -46,6 +46,7 @@ class EntityApi
      * $entityId is the ID of the entity to retrieve. You can specify the entity by its name instead of its ID.
      *
      * @param string $entityId
+     *
      * @return mixed
      */
     public function getEntity($entityId = null)
@@ -61,6 +62,7 @@ class EntityApi
      * Create a new entity.
      *
      * @param EntityObject $entity
+     *
      * @return mixed
      */
     public function createEntity(EntityObject $entity)
@@ -71,9 +73,25 @@ class EntityApi
     }
 
     /**
+     * Deletes the specified entity.
+     * {$entityId} is the ID of the entity to delete. You can specify the entity by its name instead of its ID.
+     *
+     * @param string $entityId
+     *
+     * @return mixed
+     */
+    public function deleteEntity($entityId)
+    {
+        $response = $this->client->send('DELETE', $entityId);
+
+        return $this->decodeResponse($response);
+    }
+
+    /**
      * Return a path for a given entity id.
      *
      * @param string $entityId
+     *
      * @return null|string
      */
     private function getEntityPath($entityId = null)
