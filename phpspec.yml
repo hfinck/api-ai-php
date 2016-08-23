@@ -1,0 +1,4 @@
+suites:
+    suite:
+        namespace: ApiAi
+        psr4_prefix: ApiAi

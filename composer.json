@@ -20,8 +20,14 @@
       "ApiAi\\": "src/"
     }
   },
+  "config": {
+    "bin-dir": "bin"
+  },
   "require": {
     "php": ">=5.5.0",
     "guzzlehttp/guzzle": "^6.2"
+  },
+  "require-dev": {
+    "phpspec/phpspec": "^3.0"
   }
 }
