@@ -173,6 +173,10 @@ class Client
         $query = array_merge($this->getDefaultQuery(), $query);
         $headers = array_merge($this->getDefaultHeaders(), $headers);
 
+        if ($body instanceof \JsonSerializable) {
+            $body = $body->jsonSerialize();
+        }
+
         $this->lastResponse = $this->client->send($method, $uri, $body, $query, $headers, $options);
 
         $this->validateResponse($this->lastResponse);
