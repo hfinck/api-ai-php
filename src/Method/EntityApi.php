@@ -67,7 +67,7 @@ class EntityApi
      */
     public function createEntity(EntityObject $entity)
     {
-        $response = $this->client->post('entities', $entity);
+        $response = $this->client->post('entities', $entity->jsonSerialize());
 
         return $this->decodeResponse($response);
     }
