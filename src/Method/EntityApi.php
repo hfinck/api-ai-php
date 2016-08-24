@@ -73,6 +73,22 @@ class EntityApi
     }
 
     /**
+     * Add entries to the specified entity.
+     *
+     * @param string $entityId
+     * @param array $entries
+     *
+     * @return mixed
+     */
+    public function addEntries($entityId, array $entries)
+    {
+        $entityPath = $this->getEntityPath($entityId);
+        $response = $this->client->post('entities' . $entityPath . '/entries', $entries);
+
+        return $this->decodeResponse($response);
+    }
+
+    /**
      * Deletes the specified entity.
      * {$entityId} is the ID of the entity to delete. You can specify the entity by its name instead of its ID.
      *
