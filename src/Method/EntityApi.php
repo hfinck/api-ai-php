@@ -98,7 +98,23 @@ class EntityApi
      */
     public function deleteEntity($entityId)
     {
-        $response = $this->client->send('DELETE', $entityId);
+        $response = $this->client->send('DELETE', 'entities' . $this->getEntityPath($entityId));
+
+        return $this->decodeResponse($response);
+    }
+
+    /**
+     * Delete entity entries.
+     *
+     * @param string $entityId
+     * @param array $entryValues Array of strings corresponding to the reference values of entity entries to be deleted
+     *
+     * @return mixed
+     */
+    public function deleteEntries($entityId, array $entryValues)
+    {
+        $entityPath = 'entities' . $this->getEntityPath($entityId) . '/entries';
+        $response = $this->client->send('DELETE', $entityPath, $entryValues);
 
         return $this->decodeResponse($response);
     }
