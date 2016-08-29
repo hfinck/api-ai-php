@@ -185,6 +185,20 @@ class Client
     }
 
     /**
+     * Set the language to be used with API calls e.g 'en'
+     *
+     * @param string $lang
+     */
+    public function setDefaultLanguage($lang)
+    {
+        if (is_string($lang)) {
+            $this->apiLanguage = $lang;
+        } else {
+            throw new \InvalidArgumentException('Language identifier must be a string');
+        }
+    }
+
+    /**
      * @param string $method
      * @throw \InvalidArgumentException
      */
